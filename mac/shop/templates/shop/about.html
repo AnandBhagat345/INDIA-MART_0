@@ -1,0 +1,60 @@
+{% extends 'shop/basic.html' %}
+
+{% block title %}About Us{% endblock %}
+
+{% block body %}
+<!-- Jumbotron-style intro using Bootstrap 5 card layout -->
+<div class="p-5 mb-4 bg-light rounded-3">
+  <div class="container-fluid py-5">
+    <h1 class="display-5 fw-bold">About Our Store</h1>
+    <p class="col-md-8 fs-4">
+      Welcome to <strong>INDIA-CART</strong> — your one-stop destination for quality products at unbeatable prices. 
+      Our mission is to make shopping effortless, affordable, and enjoyable.
+    </p>
+    <a href="/shop"><button class="btn btn-primary btn-lg" type="button">Explore Our Products</button></a>
+  </div>
+</div>
+
+<!-- Section: Our Story -->
+<div class="container mb-5">
+  <h2 class="mb-4">Our Story</h2>
+  <p>
+    Founded in 2025 by <strong>Anand Bhagat</strong>, INDIA-CART started with a single goal — to bridge the gap between 
+    value and trust in online shopping. We realized the frustration many people faced when buying online and built a platform 
+    where every product is verified, fairly priced, and delivered fast.
+  </p>
+</div>
+
+<!-- Section: What We Offer -->
+<div class="container mb-5">
+  <h2 class="mb-4">What We Offer</h2>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">✔ Quality-checked products</li>
+    <li class="list-group-item">✔ Competitive pricing and regular discounts</li>
+    <li class="list-group-item">✔ Fast & secure delivery options</li>
+    <li class="list-group-item">✔ Multiple payment and EMI methods</li>
+    <li class="list-group-item">✔ Customer-first return and support policy</li>
+  </ul>
+</div>
+
+<!-- Section: Our Vision & Values -->
+<div class="container mb-5">
+  <h2 class="mb-4">Our Vision</h2>
+  <p>
+    We aim to become India’s most reliable online shopping platform — where trust meets technology. 
+    Every decision we make is guided by our core values:
+  </p>
+  <ul>
+    <li><strong>Integrity:</strong> Transparency in pricing and service</li>
+    <li><strong>Innovation:</strong> Always improving with user feedback</li>
+    <li><strong>Empathy:</strong> Customer satisfaction is at the heart of everything</li>
+  </ul>
+</div>
+
+<!-- Section: Team or Call to Action -->
+<div class="container text-center my-5">
+  <h2 class="mb-3">Join Our Journey</h2>
+  <p>Have questions, feedback, or suggestions? We’d love to hear from you!</p>
+  <a href="/shop/contact" class="btn btn-outline-primary">Contact Us</a>
+</div>
+{% endblock %}

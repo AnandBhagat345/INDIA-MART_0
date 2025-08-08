@@ -1,0 +1,91 @@
+{% extends 'shop/basic.html' %}
+
+{% block title %}{{ product.product_name }}{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+  <div class="row">
+    <!-- Left Side: Image + Buttons -->
+    <div class="col-md-6 text-center">
+    
+    <img src="/media/{{ product.image }}" class="img-fluid" style="max-height: 500px; width: 80%;" alt="{{ product.product_name }}">
+        
+      <div class="mt-4">
+        <button id="buy{{ product.id }}" class="btn btn-success mx-3 cart">Buy Now</button>
+        <button id="add{{ product.id }}" class="btn btn-primary mx-3 cart">Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- Right Side: Product Details -->
+    <div class="col-md-6">
+      <h3>{{ product.product_name }}</h3>
+       <p style="color: green;"><strong>4.3★</strong> 19,183 Ratings & 1,379 Reviews</p>
+      <p class="text-muted">Category: {{ product.category }}</p>
+      <p>{{ product.desc }}</p>
+      <h4 style="color:rgb(18, 18, 18);">₹{{half_price}} <del style="color: gray;">₹{{ product.price }}</del> <span style="color: green;">50% off</span></h4>
+      <h5 class="mt-4">Available offers</h5>
+      <ul style="list-style-type: none; padding-left: 0;">
+        <li>🎁 <strong>100% Cashback</strong> upto ₹500 on Axis Bank SuperMoney Rupay CC UPI transactions</li>
+        <li>💳 <strong>5% Unlimited Cashback</strong> on Flipkart Axis Bank Credit Card</li>
+        <li>💰 <strong>10% Instant Discount</strong> on SBI Credit Card EMI, up to ₹1,500 on ₹5,000+</li>
+        <li>💸 No Cost EMI on Bajaj Finserv</li>
+        <li>💳 No Cost EMI on Credit Cards</li>
+        <li>🏦 10% off on BOBCARD EMI, up to ₹1,500 on ₹5,000+</li>
+        <li>💳 10% off up to ₹1,250 on IDFC FIRST Bank Credit EMI on ₹5,000+</li>
+        <li>💳 No Cost EMI on Debit Cards</li>
+      </ul>
+
+          <hr class="my-4">
+
+      <h5>Specifications</h5>
+      <h6 class="mt-3">General</h6>
+      <table class="table table-bordered table-sm w-100">
+        <tbody>
+          <tr>
+            <th>In The Box</th>
+            <td>Handset, 1 m USB-C to USB-C Cable (USB 2.0), Quick Switch Adaptor, Sim Tool</td>
+          </tr>
+          <tr>
+            <th>Model Number</th>
+            <td>GPJ41</td>
+          </tr>
+          <tr>
+            <th>Model Name</th>
+            <td>Pixel 8</td>
+          </tr>
+          <tr>
+            <th>Color</th>
+            <td>Hazel</td>
+          </tr>
+          <tr>
+            <th>Browse Type</th>
+            <td>Smartphones</td>
+          </tr>
+          <tr>
+            <th>SIM Type</th>
+            <td>Dual Sim (Nano + eSIM)</td>
+          </tr>
+          <tr>
+            <th>Hybrid Sim Slot</th>
+            <td>No</td>
+          </tr>
+          <tr>
+            <th>Touchscreen</th>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <th>OTG Compatible</th>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <th>Quick Charging</th>
+            <td>Yes</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<script>
+ 
+{% endblock %}

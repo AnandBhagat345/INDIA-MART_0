@@ -1,0 +1,56 @@
+{% extends 'shop/basic.html' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block body %}
+<div class="container">
+  <div class="row g-5">
+    <div class="col-md-8">
+      <h3 class="fst-italic">{{ post.title }}</h3>
+
+      <article class="blog-post">
+        <h2>{{ post.head0 }}</h2>
+        <p class="blog-post-meta">January 1, 2021 by <a href="#">Mark</a></p>
+        <p>{{ post.chead0 }}</p>
+
+        <h2>{{ post.head1 }}</h2>
+        <p>{{ post.chead1 }}</p>
+
+        <h2>{{ post.head2 }}</h2>
+        <p>{{ post.chead2 }}</p>
+
+        <!-- Facebook Comments -->
+        <div class="fb-comments"
+             data-href="{{ request.build_absolute_uri }}"
+             data-width=""
+             data-numposts="5"
+             data-lazy="true">
+        </div>
+      </article>
+
+      <nav class="blog-pagination" aria-label="Pagination">
+        <a class="btn btn-outline-primary rounded-pill" href="#">Older</a>
+        <a class="btn btn-outline-secondary rounded-pill disabled" aria-disabled="true">Newer</a>
+      </nav>
+    </div>
+
+    <div class="col-md-4">
+      <div class="position-sticky" style="top: 2rem;">
+        <div class="p-4 mb-3 bg-body-tertiary rounded">
+          <h4 class="fst-italic">About</h4>
+          <p class="mb-0">INDIA-CART is an <em>e-commerce website</em>. You can use it to buy and search for items online.</p>
+        </div>
+
+        <div class="p-4">
+          <h4 class="fst-italic">Contact Us On:</h4>
+          <ol class="list-unstyled">
+            <li><a href="#">GitHub</a></li>
+            <li><a href="#">Social</a></li>
+            <li><a href="#">Facebook</a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
