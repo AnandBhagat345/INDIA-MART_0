@@ -1,0 +1,33 @@
+{% extends 'shop/basic.html' %}
+
+{% block title %} Track Your Order Now!{% endblock %}
+
+{% block body %} 
+
+
+
+<div class = "container">
+    {{respons}}
+    <div class="col my-4">
+
+        <h2>Payment status regarding your order Id {{response.ORDERID}}</h2>
+        {% if response.RESPCODE == '01' %}
+        ORDER SUCCESS
+        {% else %}
+        ORDER FAILURE
+        {% endif %}
+
+    </div>
+
+</div>
+{% endblock %}
+{% block js %}
+
+<!-- Load jQuery FIRST -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+
+</script>
+
+{% endblock %}
+
