@@ -7,7 +7,8 @@ import json
 from django.shortcuts import get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from mac.paytm_gateway import checksum
-
+import os
+MERCHANT_KEY = os.getenv('MERCHANT_KEY')
 
 # Create your views here.
 def index(request):
@@ -161,13 +162,4 @@ def handlerequest(request):
         
     return render(request, 'shop/paymentstatus.html', {'response' : response_dict})
 
-def cart(request):
-    return render(request,'shop/cart.html')
 
-def order_history(request):
-    return render(request,'shop/order_history.html')
-
-def profile(request):
-    return render(request,'shop/profile.html')
-
-    
