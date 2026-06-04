@@ -13,6 +13,11 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 import os
 
+from dotenv import load_dotenv
+load_dotenv()
+
+SECRET_KEY = os.getenv('SECRET_KEY')
+
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -38,7 +43,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure--%@#h3dfk@7e$8-1+fpqw+ex)w)5*jn_*&s93j6re4q*&%ig$+'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -96,7 +101,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',   # Change from sqlite3 to mysql
         'NAME': 'ecommerce_db',                  # Your MySQL database name
         'USER': 'root',                          # Your MySQL username
-        'PASSWORD': 'radheradhe',              # Your MySQL password
+        'PASSWORD': os.getenv('DB_PASSWORD'),             # Your MySQL password
         'HOST': 'localhost',
         'PORT': '3306',
     }
