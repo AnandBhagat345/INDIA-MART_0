@@ -7,18 +7,13 @@ import json
 from django.shortcuts import get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from paytm_gateway import checksum
-
+import os
+MERCHANT_KEY = os.getenv('MERCHANT_KEY')
 
 
 # Create your views here.
 def index(request):
-    # products = Product.objects.all()
-    # n = len(products)
-    # nslides = ceil(n / 4)
-    # params = {'no_of_slides': nslides, 'range': range(nslides), 'products': products}
-    # allProds=[[products, range(1, nslides) , nslides],
-    #           [products, range(1, nslides) , nslides]]
-
+  
     allProds = []
     catprods = Product.objects.values('category', 'id')  # Get categories
     cats = {item['category'] for item in catprods}       # Unique categories
@@ -168,13 +163,5 @@ def handlerequest(request):
         
     return render(request, 'shop/paymentstatus.html', {'response' : response_dict})
 
-def cart(request):
-    return render(request,'shop/cart.html')
-
-def order_history(request):
-    return render(request,'shop/order_history.html')
-
-def profile(request):
-    return render(request,'shop/profile.html')
 
     

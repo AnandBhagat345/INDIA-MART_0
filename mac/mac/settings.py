@@ -17,9 +17,6 @@ from dotenv import load_dotenv
 load_dotenv()
 
 SECRET_KEY = os.getenv('SECRET_KEY')
-# and in DATABASES:
-'PASSWORD': os.getenv('DB_PASSWORD')
-
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
