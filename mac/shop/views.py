@@ -165,3 +165,8 @@ def handlerequest(request):
 
 
     
+def order_history(request):
+    return render(request,'shop/order_history.html')
+
+def profile(request):
+    return render(request,'shop/profile.html')

@@ -10,6 +10,7 @@ from mac.paytm_gateway import checksum
 import os
 MERCHANT_KEY = os.getenv('MERCHANT_KEY')
 
+
 # Create your views here.
 def index(request):
 
@@ -163,3 +164,10 @@ def handlerequest(request):
     return render(request, 'shop/paymentstatus.html', {'response' : response_dict})
 
 
+def order_history(request):
+    return render(request,'shop/order_history.html')
+
+def profile(request):
+    return render(request,'shop/profile.html')
+
+    
