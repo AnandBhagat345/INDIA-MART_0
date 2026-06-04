@@ -6,7 +6,7 @@ from math import ceil
 import json
 from django.shortcuts import get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
-from paytm_gateway import checksum
+from mac.paytm_gateway import checksum
 
 
 # Create your views here.
