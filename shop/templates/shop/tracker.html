@@ -1,0 +1,124 @@
+{% extends 'shop/basic.html' %}
+
+{% block title %} Track Your Order Now!{% endblock %}
+
+{% block body %} 
+
+
+
+<div class = "container">
+  <div class="col my-4">
+    <h2>Where's Your Order?</h2>
+    <p>Use your Order ID & Email to track your INDIA-MART order in real-time.</p>
+   <form class="row g-3" method ="post" action ="#" id="trackerForm">{% csrf_token %}
+
+      <div class="form=row">
+      <div class="col-md-6">
+        <label for="inputName4" class="form-label">Order Id</label>
+        <input type="text" class="form-control" id="orderId" name="orderId" placeholder="Order Id"> 
+      </div>
+
+  <div class="col-md-6">
+    <label for="inputEmail4" class="form-label">E-mail</label>
+    <input type="email" class="form-control" id="email" name="email" placeholder="E-mail">
+  </div>
+<div class="col-12 my-2">
+    <button type="submit" class="btn btn-primary">Track Order</button>
+  </div>
+
+
+</div>
+<div class="col my-3">
+    <h2>Your Order Status</h2>
+    <div class="my-4">
+        <ul class="list-group" id="items">
+           Enter your Order Id and Email and click track Order to find details about your order !
+        </ul>
+    </div>
+<div class="col my-3">
+    <h2>Your Order Details</h2>
+    <div class="my-4">
+        <ul class="list-group" id="citems">
+          
+        </ul>
+    </div>
+
+
+    </div>
+</div>
+{% endblock %}
+{% block js %}
+
+<!-- Load jQuery FIRST -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $('#trackerForm').submit(function(event){
+    event.preventDefault();
+    $('#items').empty();
+
+    var formData = {
+      'orderId': $('#orderId').val(),
+      'email': $('#email').val(),
+      'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val()
+    };
+
+    $.ajax({
+      type: 'POST',
+      url: '/shop/tracker/',
+      data: formData,
+    })
+    .done(function(data){
+  $('#items').empty();
+  $('#citems').empty();
+
+  if (data.error) {
+    $('#items').append('<li class="list-group-item text-danger">' + data.error + '</li>');
+  } else {
+    // Show order status updates
+    data.updates.forEach(update => {
+      $('#items').append(`
+        <li class="list-group-item d-flex justify-content-between">
+          <span>${update.text}</span>
+          <span>${update.time}</span>
+        </li>
+      `);
+    });
+
+    // Show ordered items
+    let total = 0;
+    for (let key in data.items) {
+      let item = data.items[key];
+      let subtotal = item.price * item.qty;
+      total += subtotal;
+
+      $('#citems').append(`
+        <li class="list-group-item d-flex justify-content-between">
+          <div>
+            <strong>${item.name}</strong><br>
+            ₹${item.price} × ${item.qty}
+            
+          </div>
+          
+          <span>₹${subtotal}</span>
+        </li>
+      `);
+    }
+
+    // Show total
+    $('#citems').append(`
+      <li class="list-group-item d-flex justify-content-between bg-light fw-bold">
+        <span>Total Amount</span>
+        <span>₹${total}</span>
+      </li>
+    `);
+  }
+})
+
+    .fail(function() {
+      $('#items').append('<li class="list-group-item text-danger">Server error. Please try again later.</li>');
+    });
+  });
+</script>
+
+{% endblock %}
+
