@@ -43,9 +43,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['INDIA-MART-0.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['india-mart-0.onrender.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -63,6 +63,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -95,12 +96,8 @@ WSGI_APPLICATION = 'mac.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',   # Change from sqlite3 to mysql
-        'NAME': 'ecommerce_db',                  # Your MySQL database name
-        'USER': 'root',                          # Your MySQL username
-        'PASSWORD': os.getenv('DB_PASSWORD'),           # Your MySQL password
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
